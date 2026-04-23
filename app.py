@@ -11,6 +11,11 @@ uploaded_file = st.sidebar.file_uploader("Upload CSV file", type=["csv"])
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
+    # فصل العمود Indicator إلى أعمدة جديدة
+df[['Region', 'Type', 'Unit']] = df['Indicator'].str.split(' - ', expand=True)
+
+# حذف الأعمدة غير المطلوبة
+df.drop(columns=['Unit', 'Indicator'], inplace=True)
 else:
     st.warning("Please upload a dataset to continue")
     st.stop()
@@ -25,6 +30,7 @@ value_col = st.selectbox("Select Load Column", df.columns)
 
 # تحويل التاريخ
 df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+df = df.dropna(subset=[date_col])
 df = df.sort_values(by=date_col)
 
 # اختيار المنطقة (إذا موجود)
