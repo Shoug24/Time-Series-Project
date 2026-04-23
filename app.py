@@ -10,7 +10,7 @@ st.sidebar.header("Upload Data")
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type=["csv"])
 
 if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
+    df = pd.read_csv(uploaded_file, sep=';')
 else:
     st.warning("Please upload a dataset to continue")
     st.stop()
