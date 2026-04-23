@@ -3,5 +3,3 @@ pandas
 matplotlib
 statsmodels
 scipy
-scikit-learn
-tensorflow
