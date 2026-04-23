@@ -64,7 +64,7 @@ if st.button("Run Forecast"):
     st.write(forecast)
 
     # تواريخ مستقبلية
-    future_dates = pd.date_range(start=df[date_col].iloc[-1], periods=steps+1, freq='M')[1:]
+    future_dates = pd.date_range(start=df[date_col].iloc[-1], periods=steps+1, freq='MS')[1:]
 
     # رسم التوقع
     fig2, ax2 = plt.subplots()
