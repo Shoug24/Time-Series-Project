@@ -24,7 +24,7 @@ date_col = st.selectbox("Select Date Column", df.columns)
 value_col = st.selectbox("Select Load Column", df.columns)
 
 # تحويل التاريخ
-df[date_col] = pd.to_datetime(df[date_col])
+df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
 df = df.sort_values(by=date_col)
 
 # اختيار المنطقة (إذا موجود)
